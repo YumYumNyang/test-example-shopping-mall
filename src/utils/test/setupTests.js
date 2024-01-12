@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 
+// 모킹한 모듈의 히스토리를 초기화
 afterEach(() => {
   vi.clearAllMocks();
 });
@@ -8,6 +9,7 @@ afterAll(() => {
   vi.resetAllMocks();
 });
 
+// jsDOM에서 없는 것들을 추가함
 // https://github.com/vitest-dev/vitest/issues/821
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
