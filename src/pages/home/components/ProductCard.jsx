@@ -15,6 +15,8 @@ import { pageRoutes } from '@/apiRoutes';
 import { pathToUrl } from '@/helpers/url';
 import { formatPrice } from '@/utils/formatter';
 
+// product prop 기준으로 상품 정보(상품명, 가격, 상품 이미지)가 잘 렌더링되는지
+// onClickAddCardButton, onClickPurchaseButton가 올바르게 동작하는지 -> 스파이 함수
 const ProductCard = ({
   product,
   onClickAddCartButton,
