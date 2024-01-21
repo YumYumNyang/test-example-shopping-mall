@@ -8,6 +8,7 @@ import { useCartStore } from '@/store/cart';
 import { pick } from '@/utils/common';
 import { formatPrice, formatNumber } from '@/utils/formatter';
 
+// zustand에 대한 자세한 사용법은 공식 문서 참조
 const PriceSummary = () => {
   const navigate = useNavigate();
 

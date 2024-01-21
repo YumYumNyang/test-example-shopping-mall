@@ -16,6 +16,9 @@ export const handlers = [
       res(ctx.status(200), ctx.json(response[path])),
     ),
   ),
+  // 테스트 환경에서 상품 목록 조회 API 요청이 실행되면 msw에서 요청을 가로챈다.
+  // products.json에 정의한 상품 목록 모킹 데이터를 페이징 단위로 잘라 API 응답처럼 반환
+  // 테스트 코드에서 항상 동일한 모킹 데이터를 기반으로 원하는 시나리오에 대한 안정성 있는 검증 가능
   rest.get(`${API_DOMAIN}${apiRoutes.products}`, (req, res, ctx) => {
     const data = response[apiRoutes.products];
     const offset = Number(req.url.searchParams.get('offset'));
@@ -29,6 +32,8 @@ export const handlers = [
       ctx.json({ products, lastPage: products.length < limit }),
     );
   }),
+  // 사용자 정보가 없는 비로그인 상태로 모킹
+  // 하지만, 테스트 실행 시 profile get API에 대해 사용자 정보가 응다으로 오도록 모킹 필요
   rest.get(`${API_DOMAIN}${apiRoutes.profile}`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(null));
   }),
